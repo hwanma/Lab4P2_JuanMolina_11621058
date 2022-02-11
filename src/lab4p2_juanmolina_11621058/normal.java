@@ -15,6 +15,10 @@ public class normal extends aldeano{
     public normal(String nombre, String apellido, int edad, int vida) {
         super(nombre, apellido, edad, vida);
     }
+    
+    public normal(aldeano aldeano){
+        
+    }
 
     public double getAtaque() {
         return ataque;
