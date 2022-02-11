@@ -9,7 +9,7 @@ package lab4p2_juanmolina_11621058;
  *
  * @author Hwan
  */
-public class aldeano extends familias{
+public class aldeano extends familia{
     private String nombre;
     private String apellido;
     private int edad;
@@ -59,7 +59,7 @@ public class aldeano extends familias{
 
     @Override
     public String toString() {
-        return "aldeanos{" + "nombre=" + nombre + ", apellido=" + apellido + ", edad=" + edad + ", vida=" + vida + '}';
+        return "aldeano{" + "nombre=" + nombre + ", apellido=" + apellido + ", edad=" + edad + ", vida=" + vida + '}';
     }
     
     

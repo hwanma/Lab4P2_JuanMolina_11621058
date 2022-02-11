@@ -7,20 +7,20 @@ package lab4p2_juanmolina_11621058;
 
 import java.util.ArrayList;
 
-/**
- *
- * @author Hwan
- */
-public class familias {
+public class familia {
     private String apellido;
     private ArrayList<aldeano> aldeanos;
 
-    public familias() {
+    public familia() {
     }
 
-    public familias(String apellido, ArrayList<aldeano> aldeanos) {
+    public familia(String apellido, ArrayList<aldeano> aldeanos) {
         this.apellido = apellido;
         this.aldeanos = aldeanos;
+    }
+    
+    public familia(String apellido) {
+        this.apellido = apellido;
     }
 
     public String getApellido() {
