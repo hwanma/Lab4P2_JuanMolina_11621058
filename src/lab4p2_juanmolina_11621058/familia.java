@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class familia {
     private String apellido;
-    private ArrayList<aldeano> aldeanos;
+    private ArrayList<aldeano> aldeanos = new ArrayList();
 
     public familia() {
     }

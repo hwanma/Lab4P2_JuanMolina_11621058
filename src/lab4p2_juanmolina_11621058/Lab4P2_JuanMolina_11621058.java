@@ -5,11 +5,7 @@
  */
 package lab4p2_juanmolina_11621058;
 
-import java.awt.Color;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Scanner;
 
 /*
@@ -17,26 +13,20 @@ import java.util.Scanner;
  */
 public class Lab4P2_JuanMolina_11621058 {
     public static Scanner sc = new Scanner(System.in);
-    public static ArrayList<familia> familias;
+    public static ArrayList<familia> familias = new ArrayList();
     
     public static void main(String[] args) {
         familia montesco = new familia("Montesco");
-        herrero herrero1 = new herrero("Juan","Montesco",25,100);
-        agronomo agronomo1 = new agronomo("Luis","Montesco",21,80);
-        superGranjero romeo = new superGranjero("Romeo","Montesco",28,100);
+        montesco.getAldeanos().add(new herrero("Juan","Montesco",25,100));
+        montesco.getAldeanos().add(new agronomo("Luis","Montesco",21,80));
+        montesco.getAldeanos().add(new superGranjero("Romeo","Montesco",28,100));
         familias.add(montesco);
-        montesco.getAldeanos().add(herrero1);
-        montesco.getAldeanos().add(agronomo1);
-        montesco.getAldeanos().add(romeo);
         
         familia capuleto = new familia("Capuleto");
+        capuleto.getAldeanos().add(new explosivo("Cesar","Capuleto",17,10));
+        capuleto.getAldeanos().add(new normal("Pamela","Capuleto",18,69));
+        capuleto.getAldeanos().add(new normal("Julieta","Capuleto",27,100));
         familias.add(capuleto);
-        explosivo explosivo1 = new explosivo("Cesar","Capuleto",17,10);
-        normal normal1 = new normal("Pamela","Capuleto",18,69);
-        normal julieta = new normal("Julieta","Capuleto",27,100);
-        capuleto.getAldeanos().add(explosivo1);
-        capuleto.getAldeanos().add(normal1);
-        capuleto.getAldeanos().add(julieta);
         
         char resp = 's';
         while (resp == 's' || resp == 'S') {
@@ -71,6 +61,13 @@ public class Lab4P2_JuanMolina_11621058 {
                             case 1: {
                                 
                                 normal nuevo = (normal)sol();
+                                String apellidoFamilia = nuevo.getApellido();
+                                for (familia familia1 : familias) {
+                                    if (familia1.getApellido().equalsIgnoreCase(apellidoFamilia)) {
+                                        familia1.getAldeanos().add(nuevo);
+                                    }
+                                }
+                                
                                 estado = false;
                                 break;
                             }
@@ -78,6 +75,12 @@ public class Lab4P2_JuanMolina_11621058 {
                             case 2: {
                                 
                                 pacifista nuevo = (pacifista)sol();
+                                String apellidoFamilia = nuevo.getApellido();
+                                for (familia familia1 : familias) {
+                                    if (familia1.getApellido().equalsIgnoreCase(apellidoFamilia)) {
+                                        familia1.getAldeanos().add(nuevo);
+                                    }
+                                }
                                 estado = false;
                                 break;
                             }
@@ -85,6 +88,12 @@ public class Lab4P2_JuanMolina_11621058 {
                             case 3: {
                                 
                                 herrero nuevo = (herrero)sol();
+                                String apellidoFamilia = nuevo.getApellido();
+                                for (familia familia1 : familias) {
+                                    if (familia1.getApellido().equalsIgnoreCase(apellidoFamilia)) {
+                                        familia1.getAldeanos().add(nuevo);
+                                    }
+                                }
                                 estado = false;
                                 break;
                             }
@@ -92,6 +101,12 @@ public class Lab4P2_JuanMolina_11621058 {
                             case 4: {
                                 
                                 agronomo nuevo = (agronomo)sol();
+                                String apellidoFamilia = nuevo.getApellido();
+                                for (familia familia1 : familias) {
+                                    if (familia1.getApellido().equalsIgnoreCase(apellidoFamilia)) {
+                                        familia1.getAldeanos().add(nuevo);
+                                    }
+                                }
                                 estado = false;
                                 break;
                             }
@@ -99,6 +114,12 @@ public class Lab4P2_JuanMolina_11621058 {
                             case 5: {
                                 
                                 explosivo nuevo = (explosivo)sol();
+                                String apellidoFamilia = nuevo.getApellido();
+                                for (familia familia1 : familias) {
+                                    if (familia1.getApellido().equalsIgnoreCase(apellidoFamilia)) {
+                                        familia1.getAldeanos().add(nuevo);
+                                    }
+                                }
                                 estado = false;
                                 break;
                             }
@@ -112,11 +133,19 @@ public class Lab4P2_JuanMolina_11621058 {
                             }
                         }
                     }
-                    
                     break;
                 }
                 
                 case 3:{
+                    
+                    String acum = "";
+
+                    for (familia temp : familias) {
+                        if (temp instanceof familia) {
+                            acum += "" + familias.indexOf(temp) + " - " + familias.toString() + "\n";
+                        }
+                    }
+                    System.out.println(acum);
                     break;
                 }
                 
@@ -163,6 +192,18 @@ public class Lab4P2_JuanMolina_11621058 {
         return estado;
     }
     
+    public static boolean valid2(String x){
+        boolean estado = false;
+        
+        for(int i=0;i<familias.size();i++){
+            if(x!=((familia)familias.get(i)).getApellido()){
+                estado = true;
+                break;
+            }
+        }
+        return estado;
+    }
+    
     public static int profesion(){
         System.out.println("");
         System.out.println("********PROFESIONES*******");
@@ -183,6 +224,11 @@ public class Lab4P2_JuanMolina_11621058 {
         System.out.println("Ingrese el apellido: ");
         String apellido = sc.nextLine();
         apellido = sc.nextLine();
+        
+        while(!valid2(apellido)){
+            System.out.println("Esta familia no existe!\n Ingrese otro apellido: ");
+            apellido = sc.next();
+        }
         
         System.out.println("Ingrese la edad: ");
         int edad = sc.nextInt();
