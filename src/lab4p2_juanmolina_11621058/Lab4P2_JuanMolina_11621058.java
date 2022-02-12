@@ -6,13 +6,16 @@
 package lab4p2_juanmolina_11621058;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Random;
 import java.util.Scanner;
 
 /*
  String nombre, String apellido, int edad, double vida
  */
 public class Lab4P2_JuanMolina_11621058 {
-    public static Scanner sc = new Scanner(System.in);
+    static Scanner sc = new Scanner(System.in);
+    static Random r = new Random();
     public static ArrayList<familia> familias = new ArrayList();
     
     public static void main(String[] args) {
@@ -21,14 +24,18 @@ public class Lab4P2_JuanMolina_11621058 {
         montesco.getAldeanos().add(new agronomo("Luis","Montesco",21,80));
         montesco.getAldeanos().add(new superGranjero("Romeo","Montesco",28,100));
         familias.add(montesco);
-        System.out.println(montesco.toString());
-        
         
         familia capuleto = new familia("Capuleto");
         capuleto.getAldeanos().add(new explosivo("Cesar","Capuleto",17,10));
         capuleto.getAldeanos().add(new normal("Pamela","Capuleto",18,69));
         capuleto.getAldeanos().add(new normal("Julieta","Capuleto",27,100));
         familias.add(capuleto);
+        
+        familia molina = new familia("Molina");
+        molina.getAldeanos().add(new agronomo("Diego","Molina",24,105));
+        molina.getAldeanos().add(new herrero("Javier","Molina",42,75));
+        molina.getAldeanos().add(new pacifista("Fernando","Molina",27,100));
+        familias.add(molina);
         
         char resp = 's';
         while (resp == 's' || resp == 'S') {
@@ -40,6 +47,7 @@ public class Lab4P2_JuanMolina_11621058 {
                 }
                 
                 case 1:{
+                    System.out.println("******************************");
                     System.out.println("Crear una Familia");
                     System.out.println("Ingrese el APELLIDO de la familia: ");
                     String apellido = sc.nextLine();
@@ -51,10 +59,12 @@ public class Lab4P2_JuanMolina_11621058 {
                     }
                     
                     familias.add(new familia(apellido));
+                    System.out.println("******************************");
                     break;
                 }
                 
                 case 2:{
+                    System.out.println("******************************");
                     System.out.println("Crear un Aldeano");
                     
                     boolean estado = true;
@@ -133,21 +143,46 @@ public class Lab4P2_JuanMolina_11621058 {
                             }
                         }
                     }
+                    System.out.println("******************************");
                     break;
                 }
                 
                 case 3:{
-                    
+                    System.out.println("******************************");
+                    System.out.println("Imprimir Familias");
                     String acum = "";
 
                     for (familia temp : familias) {
                         acum += familias.indexOf(temp) + ". " + familias.toString() + "\n";
                     }
                     System.out.println(acum);
+                    System.out.println("******************************");
                     break;
                 }
                 
                 case 4:{
+                    System.out.println("******************************");
+                    
+                    if(familias.size()>2){
+                        System.out.println("Ingrese el apellido de la familia que desea que pelee: ");
+                        String apellidoFamilia = sc.nextLine();
+                        apellidoFamilia = sc.nextLine();
+                        while(apellidoFamilia == "Capuleto"){
+                            System.out.println("Aun no puede pelear la familia Capuleto: ");
+                            apellidoFamilia = sc.nextLine();
+                        }
+                        for (familia enemigo : familias) {
+                            if(enemigo.getApellido().equalsIgnoreCase(apellidoFamilia)){
+                                Collections.shuffle(montesco.getAldeanos(), r);
+                                Collections.shuffle(enemigo.getAldeanos(), r);
+                                
+                                
+                            }
+                        }
+                    }
+                    
+                    
+                    System.out.println("******************************");
                     break;
                 }
                 
@@ -166,13 +201,15 @@ public class Lab4P2_JuanMolina_11621058 {
     public static int menu(){
         System.out.println("");
         System.out.println("********ROMEO Y JULIETA*******");
-        System.out.println("************MENU***********");
+        System.out.println("**************MENU************");
+        System.out.println("******************************");
         System.out.println("0. Salir\n"
                 + "1. Crear Familia\n"
                 + "2. Crear Aldeano\n"
                 + "3. Imprimir Familias\n"
                 + "4. Pelear\n"
                 + "Ingrese la opcion: ");
+        System.out.println("******************************");
         return sc.nextInt();
     }
     
@@ -221,7 +258,6 @@ public class Lab4P2_JuanMolina_11621058 {
         
         System.out.println("Ingrese el apellido: ");
         String apellido = sc.nextLine();
-        apellido = sc.nextLine();
         
         while(!valid2(apellido)){
             System.out.println("Esta familia no existe!\n Ingrese otro apellido: ");
@@ -237,6 +273,13 @@ public class Lab4P2_JuanMolina_11621058 {
         Object[] lista = new Object[]{nombre,apellido,edad,vida};
         
         return lista;
+    }
+    
+    public void duelo(familia aliado, familia enemigo){
+        aldeano aliadoP = aliado.getAldeanos().get(0);
+        enemigo.getAldeanos().get(0);
+        
+        if(aliado.getAldeanos() instanceo)
     }
     
 }

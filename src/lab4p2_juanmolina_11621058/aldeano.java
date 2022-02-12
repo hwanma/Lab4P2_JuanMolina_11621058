@@ -62,5 +62,7 @@ public class aldeano extends familia{
         return "aldeano{" + "nombre=" + nombre + ", apellido=" + apellido + ", edad=" + edad + ", vida=" + vida + '}';
     }
     
-    
+    public void pelea(){
+        
+    }
 }
