@@ -30,7 +30,17 @@ public class superGranjero extends aldeano{
 
     @Override
     public String toString() {
-        return "superGranjero{" + "ataque=" + ataque + '}';
+        return super.toString() + "superGranjero{" + "ataque=" + ataque + '}';
+    }
+    
+    public void pelea(aldeano nuevo) {
+        if (nuevo instanceof explosivo) {
+            nuevo.setVida(nuevo.getVida() - (ataque * 1.15));
+        } else if (nuevo instanceof herrero) {
+            nuevo.setVida(nuevo.getVida() - (ataque * 1.10));
+        } else {
+            nuevo.setVida(nuevo.getVida() - (ataque));
+        }
     }
     
     

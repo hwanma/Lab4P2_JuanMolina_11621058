@@ -29,7 +29,11 @@ public class pacifista extends aldeano{
 
     @Override
     public String toString() {
-        return "pacifista{" + "ataque=" + ataque + '}';
+        return super.toString() + "pacifista{" + "ataque=" + ataque + '}';
+    }
+    
+    public void pelea(aldeano nuevo){
+        nuevo.setVida(nuevo.getVida()-ataque);
     }
     
     

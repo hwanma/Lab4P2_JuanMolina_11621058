@@ -12,7 +12,7 @@ public class normal extends aldeano{
     public normal() {
     }
 
-    public normal(String nombre, String apellido, int edad, int vida) {
+    public normal(String nombre, String apellido, int edad, double vida) {
         super(nombre, apellido, edad, vida);
     }
     
@@ -30,8 +30,15 @@ public class normal extends aldeano{
 
     @Override
     public String toString() {
-        return "normal{" + "ataque=" + ataque + '}';
+        return super.toString() + "normal{" + "ataque=" + ataque + '}';
     }
     
+    public void pelea(aldeano nuevo){
+        if(nuevo instanceof pacifista){
+            nuevo.setVida(nuevo.getVida()-(ataque*1.05));
+        } else {
+            nuevo.setVida(nuevo.getVida()-(ataque));
+        }
+    }
     
 }

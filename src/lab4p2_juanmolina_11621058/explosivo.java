@@ -5,8 +5,11 @@
  */
 package lab4p2_juanmolina_11621058;
 
+import java.util.Random;
+
 
 public class explosivo extends aldeano{
+    static Random r = new Random();
     private double ataque = 250;
 
     public double getAtaque() {
@@ -26,10 +29,20 @@ public class explosivo extends aldeano{
 
     @Override
     public String toString() {
-        return "explosivo{" + "ataque=" + ataque + '}';
+        return super.toString() + "explosivo{" + "ataque=" + ataque + '}';
     }
 
-    
-    
+    public void pelea(aldeano nuevo) {
+        int random = 1 + r.nextInt(100);
+        if (random >= 16) {
+            if (nuevo instanceof herrero) {
+                nuevo.setVida(nuevo.getVida() - (ataque * 1.05));
+            } else if (nuevo instanceof agronomo) {
+                nuevo.setVida(nuevo.getVida() - (ataque * 1.10));
+            } else {
+                nuevo.setVida(nuevo.getVida() - (ataque));
+            }
+        }
+    }
     
 }

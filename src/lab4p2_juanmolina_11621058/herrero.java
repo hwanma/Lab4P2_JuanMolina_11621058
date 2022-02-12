@@ -30,11 +30,19 @@ public class herrero extends aldeano{
 
     @Override
     public String toString() {
-        return "herrero{" + "ataque=" + ataque + '}';
+        return super.toString() + "herrero{" + "ataque=" + ataque + '}';
     }
     
-    
-    
-    
-    
+    public void pelea(aldeano nuevo){
+        int random = 1+r.nextInt(10);
+        if (random >= 2){
+            if (nuevo instanceof pacifista) {
+                nuevo.setVida(nuevo.getVida() - (ataque * 1.05));
+            } else if (nuevo instanceof agronomo) {
+                nuevo.setVida(nuevo.getVida() - (ataque * 1.10));
+            } else {
+                nuevo.setVida(nuevo.getVida() - (ataque));
+            }
+        } 
+    }
 }

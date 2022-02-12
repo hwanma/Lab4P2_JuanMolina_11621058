@@ -5,8 +5,11 @@
  */
 package lab4p2_juanmolina_11621058;
 
+import java.util.Random;
+
 
 public class agronomo extends aldeano{
+    static Random r = new Random();
     private double ataque = 100;
 
     public agronomo() {
@@ -26,10 +29,21 @@ public class agronomo extends aldeano{
 
     @Override
     public String toString() {
-        return "agronomo{" + "ataque=" + ataque + '}';
+        return super.toString() + "agronomo{" + "ataque=" + ataque + '}';
     }
 
-    
+    public void pelea(aldeano nuevo) {
+        int random = 1 + r.nextInt(100);
+        if (random >= 6) {
+            if (nuevo instanceof pacifista) {
+                nuevo.setVida(nuevo.getVida() - (ataque * 1.05));
+            } else if (nuevo instanceof normal) {
+                nuevo.setVida(nuevo.getVida() - (ataque * 1.10));
+            } else {
+                nuevo.setVida(nuevo.getVida() - (ataque));
+            }
+        }
+    }
     
     
     
